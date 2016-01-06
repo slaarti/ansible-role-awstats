@@ -17,6 +17,11 @@ Role Variables
 The list of packages to install. You can override this if you want to make sure
 additional packages have been installed for plugins like GeoIP or the like.
 
+    awstats_default_release: ""
+
+Default release for installing packages. Allows you to specify using the
+backports repository, if you've configured it previously.
+
 Example Playbook
 ----------------
 

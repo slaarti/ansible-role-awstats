@@ -4,4 +4,5 @@
     pkg: {{item}}
     state: latest
     update_cache: yes
+    default_release: "{{ awstats_default_release }}"
   with_items: awstats_packages
