@@ -1,0 +1,7 @@
+---
+- name: Install awstats package(s)
+  apt:
+    pkg: {{item}}
+    state: latest
+    update_cache: yes
+  with_items: awstats_packages
