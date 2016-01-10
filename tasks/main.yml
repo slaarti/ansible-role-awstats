@@ -6,3 +6,20 @@
     update_cache: yes
     default_release: "{{ awstats_default_release }}"
   with_items: awstats_packages
+
+- name: Check for package-installed awstats.conf
+  stat: path=/etc/awstats/awstats.conf
+  register: awstats_conf_file
+
+- name: Copy base awstats config
+  copy:
+    src: "/etc/awstats/awstats.conf"
+    dest: "/etc/awstats/awstats.conf.base"
+  when: awstats_conf_file.stat.exists == True
+
+- name: Remove package-installed awstats.conf
+  file:
+    path: "/etc/awstats/awstats.conf"
+    state: absent
+  when: awstats_conf_file.stat.exists == True
+
