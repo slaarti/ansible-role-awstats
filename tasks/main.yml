@@ -1,7 +1,7 @@
 ---
 - name: Install awstats package(s)
   apt:
-    pkg: {{item}}
+    pkg: "{{ item }}"
     state: latest
     update_cache: yes
     default_release: "{{ awstats_default_release }}"
