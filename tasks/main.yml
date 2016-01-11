@@ -14,7 +14,7 @@
 - name: Copy base awstats config
   copy:
     src: "/etc/awstats/awstats.conf"
-    dest: "/etc/awstats/awstats.conf.base"
+    dest: "/etc/awstats/awstats.conf.dist"
   when: awstats_conf_file.stat.exists == True
 
 - name: Remove package-installed awstats.conf
