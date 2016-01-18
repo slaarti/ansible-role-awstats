@@ -23,3 +23,8 @@
     state: absent
   when: awstats_conf_file.stat.exists == True
 
+- name: Configure awstats.local.conf
+  template:
+    src: "local.conf.j2"
+    dest: "/etc/awstats/awstats.conf.local"
+

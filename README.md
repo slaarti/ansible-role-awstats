@@ -83,6 +83,11 @@ additional packages have been installed for plugins like GeoIP or the like.
 Default release for installing packages. Allows you to specify using the
 backports repository, if you've configured it previously.
 
+    awstats_local_options: []
+
+A list of options to set in `awstats.conf.local`. Each option is
+a dictionary with `name` and `value` keys.
+
 Example Playbook
 ----------------
 

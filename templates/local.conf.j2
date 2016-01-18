@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+{% for option in awstats_local_options -%}
+{{ option.name }}="{{ option.value }}"
+{%- endfor %}
+
