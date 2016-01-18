@@ -5,3 +5,5 @@ awstats_packages:
 awstats_default_release: ""
 
 awstats_local_options: []
+
+awstats_site_configs: []

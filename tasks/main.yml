@@ -28,3 +28,9 @@
     src: "local.conf.j2"
     dest: "/etc/awstats/awstats.conf.local"
 
+- name: "Create awstats config for site {{ item.name }}"
+  template:
+    src: "site.local.j2"
+    dest: "/etc/awstats/awstats.{{ item.name }}.conf"
+  with_items: "{{ awstats_site_configs }}"
+

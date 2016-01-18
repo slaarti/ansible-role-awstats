@@ -1,10 +1,12 @@
 # `awstats`
 
-This ansible role will install and assist in managing `awstats` on your
-system. It will take advantage of the fact that Debian installs a crontab
-to handle processing logs for each site according to files in
+This ansible role will install and assist in managing [`awstats`][awstats]
+on your system. It will take advantage of the fact that Debian installs
+a crontab to handle processing logs for each site according to files in
 `/etc/awstats/`, including static pages, so you do not need to configure
 running it as a CGI.
+
+[awstats]: http://www.awstats.org
 
 The `awstats` package installs in `/etc/awstats/` a `awstats.conf` file
 with all of the default options, and `awstats.conf.local` that
@@ -39,6 +41,11 @@ options will then be composed as follows:
 
 3.  Then this role will configure the options specific to this virtual
     host in the individual config file.
+
+For more information on `awstats` configuration options, you should of
+course consult [the `awstats` configuration documentation][awstatsdocs].
+
+[awstatsdocs]: http://www.awstats.org/docs/awstats_config.html
 
 As obliquely mentoned above, the package handles providing a `cron`
 configuration that runs scripts that manage running `awstats`. This role
@@ -87,6 +94,27 @@ backports repository, if you've configured it previously.
 
 A list of options to set in `awstats.conf.local`. Each option is
 a dictionary with `name` and `value` keys.
+
+    awstats_site_confgs: []
+
+A list of dictionaries containing configuration information for `awstats`
+sites. Each dictionary must contain:
+
+*   `name`: The name for the site. Used in the filename of the
+    configuration file. The `awstats` documentation suggests the virtual
+    host name, but you can use something shorter if you like, as long as
+    it's unique.
+
+*   `sitedomain`: The primary hostname for the virtual host. If this host
+    is reachable via multiple names, you can use the `options` field
+    (discussed below) to set a value for `HostAliases`.
+
+*   `logfile`: The path to the log file(s) you want `awstats` to process
+    for this site.
+
+*   `options`: A list of `name`/`value` dictionaries for setting whatever
+    other options you might want to define for this site. If you don't
+    have any to set, you can omit this.
 
 Example Playbook
 ----------------

@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+Include "/etc/awstats/awstats.conf.dist"
+SiteDomain="{{ item.sitedomain }}"
+LogFile="{{ item.logfile }}"
+{% if item.options is defined -%}
+  {%- for option in item.options -%}
+{{ option.name }}="{{ option.value }}"
+  {%- endfor %}
+{%- endif %}
+
