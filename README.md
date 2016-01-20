@@ -95,7 +95,7 @@ backports repository, if you've configured it previously.
 A list of options to set in `awstats.conf.local`. Each option is
 a dictionary with `name` and `value` keys.
 
-    awstats_site_confgs: []
+    awstats_site_configs: []
 
 A list of dictionaries containing configuration information for `awstats`
 sites. Each dictionary must contain:
