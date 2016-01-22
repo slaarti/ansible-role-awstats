@@ -9,6 +9,7 @@
 
 - name: Move base awstats config
   command: "/bin/mv -f /etc/awstats/awstats.conf /etc/awstats/awstats.conf.dist"
+  args:
     removes: "/etc/awstats/awstats.conf"
 
 - name: Configure awstats.local.conf
