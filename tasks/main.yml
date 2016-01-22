@@ -7,21 +7,9 @@
     default_release: "{{ awstats_default_release }}"
   with_items: awstats_packages
 
-- name: Check for package-installed awstats.conf
-  stat: path=/etc/awstats/awstats.conf
-  register: awstats_conf_file
-
-- name: Copy base awstats config
-  copy:
-    src: "/etc/awstats/awstats.conf"
-    dest: "/etc/awstats/awstats.conf.dist"
-  when: awstats_conf_file.stat.exists == True
-
-- name: Remove package-installed awstats.conf
-  file:
-    path: "/etc/awstats/awstats.conf"
-    state: absent
-  when: awstats_conf_file.stat.exists == True
+- name: Move base awstats config
+  command: "/bin/mv -f /etc/awstats/awstats.conf /etc/awstats/awstats.conf.dist"
+    removes: "/etc/awstats/awstats.conf"
 
 - name: Configure awstats.local.conf
   template:
