@@ -5,7 +5,7 @@
     state: latest
     update_cache: yes
     default_release: "{{ awstats_default_release }}"
-  with_items: awstats_packages
+  with_items: "{{ awstats_packages }}"
 
 - name: Move base awstats config
   command: "/bin/mv -f /etc/awstats/awstats.conf /etc/awstats/awstats.conf.dist"
