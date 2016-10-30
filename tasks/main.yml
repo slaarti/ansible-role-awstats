@@ -17,7 +17,7 @@
     src: "local.conf.j2"
     dest: "/etc/awstats/awstats.conf.local"
 
-- name: "Create awstats config for site {{ item.name }}"
+- name: Create awstats config for site {{ item.name }}
   template:
     src: "site.conf.j2"
     dest: "/etc/awstats/awstats.{{ item.name }}.conf"
